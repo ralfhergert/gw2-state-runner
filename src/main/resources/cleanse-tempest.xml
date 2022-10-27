@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simulation xmlns="http://ralfhergert.de/staterunner/gw2">
+	<build name="AuraShareTempest">
+		<action name="Fire Attunement" visible="false">
+			<on-trigger>
+				<hide action="Fire Attunement"/>
+                <show action="Water Attunement"/>
+                <show action="Air Attunement"/>
+                <show action="Earth Attunement"/>
+				<show group="fire skills"/>
+				<hide group="water skills"/>
+				<hide group="air skills"/>
+				<hide group="earth skills"/>
+				<enforce-cooldown action="Fire Overload" value="6s"/>
+				<enforce-cooldown action="Water Attunement" value="2s"/>
+				<enforce-cooldown action="Air Attunement" value="2s"/>
+				<enforce-cooldown action="Earth Attunement" value="2s"/>
+			</on-trigger>
+		</action>
+		<action name="Fire Overload" visible="true">
+			<group>fire skills</group>
+			<on-hide>
+				<enforce-cooldown action="Fire Attunement" value="10s"/>
+			</on-hide>
+            <on-trigger>
+                <channel>
+
+                </channel>
+            </on-trigger>
+		</action>
+		<action name="Water Attunement" visible="true">
+			<on-trigger>
+                <show action="Fire Attunement"/>
+                <hide action="Water Attunement"/>
+                <show action="Air Attunement"/>
+                <show action="Earth Attunement"/>
+				<hide group="fire skills"/>
+				<show group="water skills"/>
+				<hide group="air skills"/>
+				<hide group="earth skills"/>
+				<enforce-cooldown action="Fire Attunement" value="2s"/>
+				<enforce-cooldown action="Water Overload" value="6s"/>
+				<enforce-cooldown action="Air Attunement" value="2s"/>
+				<enforce-cooldown action="Earth Attunement" value="2s"/>
+			</on-trigger>
+		</action>
+		<action name="Water Overload" visible="false">
+			<group>water skills</group>
+			<on-hide>
+				<enforce-cooldown action="Water Attunement" value="10s"/>
+			</on-hide>
+		</action>
+		<action name="Air Attunement" visible="true">
+			<on-trigger>
+                <show action="Fire Attunement"/>
+                <show action="Water Attunement"/>
+                <hide action="Air Attunement"/>
+                <show action="Earth Attunement"/>
+				<hide group="fire skills"/>
+				<hide group="water skills"/>
+				<show group="air skills"/>
+				<hide group="earth skills"/>
+				<enforce-cooldown action="Fire Attunement" value="2s"/>
+				<enforce-cooldown action="Water Attunement" value="2s"/>
+				<enforce-cooldown action="Air OPverload" value="6s"/>
+				<enforce-cooldown action="Earth Attunement" value="2s"/>
+			</on-trigger>
+		</action>
+		<action name="Air Overload" visible="false">
+			<group>air skills</group>
+			<on-hide>
+				<enforce-cooldown action="Air Attunement" value="10s"/>
+			</on-hide>
+		</action>
+		<action name="Earth Attunement" visible="true">
+			<on-trigger>
+                <show action="Fire Attunement"/>
+                <show action="Water Attunement"/>
+                <show action="Air Attunement"/>
+                <hide action="Earth Attunement"/>
+				<hide group="fire skills"/>
+				<hide group="water skills"/>
+				<hide group="air skills"/>
+				<show group="earth skills"/>
+				<enforce-cooldown action="Fire Attunement" value="2s"/>
+				<enforce-cooldown action="Water Attunement" value="2s"/>
+				<enforce-cooldown action="Air Attunement" value="2s"/>
+				<enforce-cooldown action="Earth Overload" value="6s"/>
+			</on-trigger>
+		</action>
+		<action name="Earth Overload" visible="false">
+			<group>earth skills</group>
+			<on-hide>
+				<enforce-cooldown action="Earth Attunement" value="10s"/>
+			</on-hide>
+		</action>
+		<trait name="Pyromancer's Training">
+            <cooldown-modifier description="all fire skills have 20% reduced cooldown">
+                <predicate><and><isAction/><inGroup group="fire skills"/></and></predicate>
+                <multiplyWith factor="0.8"/>
+            </cooldown-modifier>
+		</trait>
+		<trait name="Aquamancer's Training">
+            <cooldown-modifier description="all water skills have 20% reduced cooldown">
+                <predicate><and><isAction/><inGroup group="water skills"/></and></predicate>
+                <multiplyWith factor="0.8"/>
+            </cooldown-modifier>
+		</trait>
+        <trait name="Powerful Aura">
+            <effect-listener description="any aura you grant yourself is granted to nearby allies.">
+                <predicate><isAura/></predicate>
+                <copy-effect><target friends="5" self="no" max-distance="600"/></copy-effect>
+            </effect-listener>
+        </trait>
+	</build>
+</simulation>

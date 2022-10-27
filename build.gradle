@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'checkstyle'
+    id 'jacoco'
+    id 'com.github.kt3k.coveralls' version '2.8.4'
+    id 'maven-publish'
+}
+
+description = 'State Maschine Runner for Guild Wars 2'
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+sourceCompatibility = 1.11
+
+checkstyle.configFile = file('checkstyle.xml')
+
+jacoco {
+    toolVersion = '0.8.5'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'
+    implementation 'org.slf4j:slf4j-api:2.0.3'
+
+    runtimeOnly 'org.glassfish.jaxb:jaxb-runtime:4.0.1'
+    runtimeOnly 'org.slf4j:slf4j-simple:2.0.3'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}

@@ -18,7 +18,7 @@ public class CooldownModifierTest {
         final String xml =
             "<cooldown-modifier " +
             "    xmlns=\"http://ralfhergert.de/staterunner/gw2\" " +
-            "    description=\"all fire skills have 20% reduced cooldown\">" +
+            "    description=\"all fire weapon skills have 20% reduced cooldown\">" +
             "    <predicate><and><isAction/><inGroup group=\"fire skills\"/></and></predicate>" +
             "    <multiplyWith factor=\"0.8\"/>" +
             "</cooldown-modifier>";

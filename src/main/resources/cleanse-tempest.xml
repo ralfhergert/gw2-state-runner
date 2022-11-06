@@ -12,9 +12,9 @@
 				<hide group="air skills"/>
 				<hide group="earth skills"/>
 				<enforce-cooldown action="Fire Overload" value="6s"/>
-				<enforce-cooldown action="Water Attunement" value="2s"/>
-				<enforce-cooldown action="Air Attunement" value="2s"/>
-				<enforce-cooldown action="Earth Attunement" value="2s"/>
+				<enforce-cooldown action="Water Attunement" value="1500ms"/>
+				<enforce-cooldown action="Air Attunement" value="1500ms"/>
+				<enforce-cooldown action="Earth Attunement" value="1500ms"/>
 			</on-trigger>
 		</action>
 		<action name="Fire Overload" visible="true">
@@ -38,10 +38,10 @@
 				<show group="water skills"/>
 				<hide group="air skills"/>
 				<hide group="earth skills"/>
-				<enforce-cooldown action="Fire Attunement" value="2s"/>
+				<enforce-cooldown action="Fire Attunement" value="1500ms"/>
 				<enforce-cooldown action="Water Overload" value="6s"/>
-				<enforce-cooldown action="Air Attunement" value="2s"/>
-				<enforce-cooldown action="Earth Attunement" value="2s"/>
+				<enforce-cooldown action="Air Attunement" value="1500ms"/>
+				<enforce-cooldown action="Earth Attunement" value="1500ms"/>
 			</on-trigger>
 		</action>
 		<action name="Water Overload" visible="false">
@@ -60,10 +60,10 @@
 				<hide group="water skills"/>
 				<show group="air skills"/>
 				<hide group="earth skills"/>
-				<enforce-cooldown action="Fire Attunement" value="2s"/>
-				<enforce-cooldown action="Water Attunement" value="2s"/>
+				<enforce-cooldown action="Fire Attunement" value="1500ms"/>
+				<enforce-cooldown action="Water Attunement" value="1500ms"/>
 				<enforce-cooldown action="Air OPverload" value="6s"/>
-				<enforce-cooldown action="Earth Attunement" value="2s"/>
+				<enforce-cooldown action="Earth Attunement" value="1500ms"/>
 			</on-trigger>
 		</action>
 		<action name="Air Overload" visible="false">
@@ -82,9 +82,9 @@
 				<hide group="water skills"/>
 				<hide group="air skills"/>
 				<show group="earth skills"/>
-				<enforce-cooldown action="Fire Attunement" value="2s"/>
-				<enforce-cooldown action="Water Attunement" value="2s"/>
-				<enforce-cooldown action="Air Attunement" value="2s"/>
+				<enforce-cooldown action="Fire Attunement" value="1500ms"/>
+				<enforce-cooldown action="Water Attunement" value="1500ms"/>
+				<enforce-cooldown action="Air Attunement" value="1500ms"/>
 				<enforce-cooldown action="Earth Overload" value="6s"/>
 			</on-trigger>
 		</action>
@@ -95,14 +95,14 @@
 			</on-hide>
 		</action>
 		<trait name="Pyromancer's Training">
-            <cooldown-modifier description="all fire skills have 20% reduced cooldown">
-                <predicate><and><isAction/><inGroup group="fire skills"/></and></predicate>
+            <cooldown-modifier description="all fire weapon skills have 20% reduced cooldown">
+                <predicate><and><isAction/><inGroup group="fire weapon skills"/></and></predicate>
                 <multiplyWith factor="0.8"/>
             </cooldown-modifier>
 		</trait>
 		<trait name="Aquamancer's Training">
-            <cooldown-modifier description="all water skills have 20% reduced cooldown">
-                <predicate><and><isAction/><inGroup group="water skills"/></and></predicate>
+            <cooldown-modifier description="all water weapon skills have 20% reduced cooldown">
+                <predicate><and><isAction/><inGroup group="water weapon skills"/></and></predicate>
                 <multiplyWith factor="0.8"/>
             </cooldown-modifier>
 		</trait>

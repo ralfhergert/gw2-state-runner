@@ -26,17 +26,16 @@ public class CleanseTempestTest {
 
         // check the cooldowns and availability on the profession mechanic skills
         Action fa = simulation.getBuild().findAction("Fire Attunement").get();
-        // TODO check if 10s is correct here
         Assertions.assertEquals(Duration.ofSeconds(10), fa.getCoolDownRemaining(), "cooldown on fire attunement");
-        Assertions.assertTrue(fa.isVisible(), "fire attunement should be visibile");
+        Assertions.assertTrue(fa.isVisible(), "fire attunement should be visible");
         Assertions.assertTrue(fa.isAvailable(), "fire attunement should be available");
         Action aa = simulation.getBuild().findAction("Air Attunement").get();
-        Assertions.assertEquals(Duration.ofSeconds(2), aa.getCoolDownRemaining(), "cooldown on air attunement");
-        Assertions.assertTrue(aa.isVisible(), "air attunement should be visibile");
+        Assertions.assertEquals(Duration.ofMillis(1500), aa.getCoolDownRemaining(), "cooldown on air attunement");
+        Assertions.assertTrue(aa.isVisible(), "air attunement should be visible");
         Assertions.assertTrue(aa.isAvailable(), "air attunement should be available");
         Action ea = simulation.getBuild().findAction("Earth Attunement").get();
-        Assertions.assertEquals(Duration.ofSeconds(2), ea.getCoolDownRemaining(), "cooldown on earth attunement");
-        Assertions.assertTrue(ea.isVisible(), "earth attunement should be visibile");
+        Assertions.assertEquals(Duration.ofMillis(1500), ea.getCoolDownRemaining(), "cooldown on earth attunement");
+        Assertions.assertTrue(ea.isVisible(), "earth attunement should be visible");
         Assertions.assertTrue(ea.isAvailable(), "earth attunement should be available");
 
     }

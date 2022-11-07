@@ -1,9 +1,14 @@
 # Tempest Overload Fire
-Upon skill activiation the following happens:
+[Overload Fire](https://wiki.guildwars2.com/wiki/Overload_Fire) is a channeled skill.
+The Tempest can move while channeling. The Tempest can not cast skills with a cast time
+while channeling. Dodging while abort the skill channel.
+
+Upon skill activation the following happens:
 
 |0|skill activation|
 |0|Traits like [Hardy Conduit](https://wiki.guildwars2.com/wiki/Hardy_Conduit) trigger and grant their boons|
 |0|charge phase begins|
+|0|a fire tornado appears in the position of the Tempest. The fire tornado will follow the Tempest when moving. It is a fire field with radius 180.|
 |0.5s|1 stack of Might is granted to allies (including self) in radius 180|
 |0.5s|burning bolts are released (not sure about the quantity)|
 |1s|charge phase ends and active phase begins|
@@ -14,7 +19,7 @@ Upon skill activiation the following happens:
 |4s|active phase ends and end phase begins|
 |4s|Traits like [Unstable Conduit](https://wiki.guildwars2.com/wiki/Unstable_Conduit) trigger and grant an aura|
 |5s|Traits like [Pyromancer's Puissance](https://wiki.guildwars2.com/wiki/Pyromancer%27s_Puissance) trigger granting 1 stack of Might to allies (including self) in radius 240 and then granting the allies in radius 240 the Might stack of the Tempest|
-|5s|the fire tornado becomes a local field|
+|5s|the fire tornado becomes a stationary field|
 |6s|the local fire tornado grants 1 stack of Might to allies (including self) in radius 180|
 |7s|the local fire tornado grants 1 stack of Might to allies (including self) in radius 180|
 |8s|the local fire tornado grants 1 stack of Might to allies (including self) in radius 180|

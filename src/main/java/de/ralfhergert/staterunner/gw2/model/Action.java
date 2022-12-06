@@ -183,8 +183,14 @@ public class Action implements Elapsing, BelongsToGroups, HasCoolDown<Action> {
         onTrigger.forEach(instruction -> instruction.execute(build));
     }
 
-    public void elapseTime(Duration duration) {
+    @Override
+    public void progress(Duration duration) {
 
+    }
+
+    @Override
+    public boolean isElapsed() {
+        return false;
     }
 
     public void coolDown(Duration duration) {

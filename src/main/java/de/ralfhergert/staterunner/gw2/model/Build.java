@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 
 @XmlRootElement(name = "build", namespace = StateRunner.NS)
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Build implements Elapsing {
+public class Build implements Progressing {
 
     @XmlAttribute(name = "position-in-time")
     @XmlJavaTypeAdapter(DurationAdapter.class)
@@ -38,23 +38,18 @@ public class Build implements Elapsing {
     @XmlElement(name = "trait", namespace = StateRunner.NS)
     private List<Trait> traits = new ArrayList<>();
 
-    public void elapseTime(Duration duration) {
+    public void progress(Duration duration) {
         final AtomicReference<Duration> cooldownDuration = new AtomicReference<>(duration);
         modifiers.stream()
             .filter(mod -> mod instanceof CooldownModifier)
             .forEach(mod -> cooldownDuration.set(((CooldownModifier)mod).getForTimeElapsed(cooldownDuration.get())));
 
-        actions.forEach(action -> action.elapseTime(duration));
+        actions.forEach(action -> action.progress(duration));
         actions.forEach(action -> action.coolDown(cooldownDuration.get()));
 
         modifiers.stream()
             .filter(mod -> mod instanceof Elapsing)
-            .forEach(mod -> ((Elapsing)mod).elapseTime(duration));
-    }
-
-    @Override
-    public boolean isElapsed() {
-        return false;
+            .forEach(mod -> ((Elapsing)mod).progress(duration));
     }
 
     public Optional<Action> findAction(String name) {
@@ -107,6 +102,6 @@ public class Build implements Elapsing {
     }
 
     public Build addEffect(Effect<?> effect) {
-
+        return this;
     }
 }

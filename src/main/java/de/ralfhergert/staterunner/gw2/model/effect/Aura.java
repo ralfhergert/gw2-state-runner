@@ -18,7 +18,7 @@ public class Aura extends Effect<Aura> implements Elapsing {
     }
 
     @Override
-    public void elapseTime(Duration duration) {
+    public void progress(Duration duration) {
         this.duration = this.duration.minus(duration);
     }
 
